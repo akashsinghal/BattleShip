@@ -1,4 +1,4 @@
-
+import java.awt.Color;
 /**
  * Write a description of class GameLogic here.
  * 
