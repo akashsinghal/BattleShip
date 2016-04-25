@@ -16,6 +16,7 @@ import java.util.*;
 import java.awt.*;
 public class Engine
 {
+    static GameLogic gameLogic = new GameLogic();
     static Scanner scan = new Scanner(System.in);
     static int sendX;
     static int sendY;
@@ -62,7 +63,15 @@ public class Engine
             //{
                 selectionx = (int) ois.readObject();
                 selectiony = (int) ois.readObject();
-                board2.changeColor(selectionx, selectiony, Color.RED);
+                if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
+                {
+                    board2.changeColor(selectionx, selectiony, Color.RED);
+                }
+                else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
+                {
+                    board2.changeColor(selectionx, selectiony, Color.WHITE);
+                }
+                //board2.changeColor(selectionx, selectiony, Color.RED);
             //}
         }
         oos.close();
