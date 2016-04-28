@@ -10,8 +10,8 @@ public class GameLogic
     static int x;
     static int y;
 
-    static SheetOfButtons playerBoard;
-    static SheetOfButtons checkBoard;
+    static ShipBoard playerBoard;
+    static ShipBoard checkBoard;
     public GameLogic ()
     {
         //x=xpos;
@@ -36,6 +36,10 @@ public class GameLogic
             return false;
         }
         return false;
+    }
+
+    public boolean endGame(){
+        return true;
     }
     //hello
 }

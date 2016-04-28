@@ -50,10 +50,20 @@ public class ShipBoard extends JFrame
         this.setSize(500,500);
         this.setVisible(true);
     }
-    
+
     public void changeColor(int x, int y, Color c)
     {
         board[y] [x].setBackground(c);
         repaint();
+    }
+
+    public Button[][] getBoard()
+    {
+        return board;
+    }
+
+    public Button getSpecificBoard(int xPos, int yPos)
+    {
+        return board[xPos][yPos];
     }
 }
