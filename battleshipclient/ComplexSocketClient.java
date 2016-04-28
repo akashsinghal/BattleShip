@@ -40,15 +40,17 @@ public class ComplexSocketClient {
             selectionx = (int) ois.readObject();
             selectiony = (int) ois.readObject();
             board2.changeColor(selectionx, selectiony, Color.RED);
-            //if((boolean) ois.readObject())
-            //{
+           
+            if((boolean) ois.readObject())
+            {
+                oos.writeObject(true);
                 System.out.println("Select a place to hit on the board and then hit enter");
                 scan.nextLine();
                 oos.writeObject(sendX);
                 oos.writeObject(sendY);
                 System.out.println("Now let's wait for Player 1");
                 //oos.writeObject(true);
-            //}
+            }
         }
         ois.close();
         oos.close();
