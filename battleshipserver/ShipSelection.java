@@ -91,8 +91,19 @@ public class ShipSelection extends JFrame
         this.setSize(500,500);
         this.setVisible(true);
     }
+
     public ArrayList<XYPoint> getPoints()
     {
         return points;
+    }
+
+    public Button[][] getBoard()
+    {
+        return board;
+    }
+
+    public Button getSpecificBoard(int xPos, int yPos)
+    {
+        return board[xPos][yPos];
     }
 }

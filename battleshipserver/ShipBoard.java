@@ -57,13 +57,4 @@ public class ShipBoard extends JFrame
         repaint();
     }
 
-    public Button[][] getBoard()
-    {
-        return board;
-    }
-
-    public Button getSpecificBoard(int xPos, int yPos)
-    {
-        return board[xPos][yPos];
-    }
 }

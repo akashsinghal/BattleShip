@@ -16,13 +16,14 @@ import java.util.*;
 import java.awt.*;
 public class Engine
 {
-    static GameLogic gameLogic = new GameLogic();
+    //static GameLogic gameLogic = new GameLogic();
     static Scanner scan = new Scanner(System.in);
     static int sendX;
     static int sendY;
     static int selectionx;
     static int selectiony;
     static boolean check = true;
+    static ShipSelection ship;
     public static void main(String [] args)throws Exception
     {
 
@@ -44,6 +45,7 @@ public class Engine
         System.out.println("Now let's begin!");
         System.out.println("First, let's start by having you select where you want to place your battle ships");
         oos.writeObject(selections());
+        GameLogic gameLogic = new GameLogic(ship);
         if((boolean) ois.readObject())
         {
             System.out.println("Let's start playing");
@@ -85,7 +87,7 @@ public class Engine
         System.out.println("Please input your name");
         String name = scan.nextLine();
         System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
-        ShipSelection ship = new ShipSelection();
+        ship = new ShipSelection();
         scan.nextLine();
         return true;
     }
