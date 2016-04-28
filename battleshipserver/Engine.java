@@ -60,21 +60,21 @@ public class Engine
             oos.writeObject(sendX);
             oos.writeObject(sendY);
             System.out.println("Now let's wait for Player 2");
-            //oos.writeObject(true);
-            //if((boolean) ois.readObject())
-            //{
+            oos.writeObject(true);
+            if((boolean) ois.readObject())
+            {
                 selectionx = (int) ois.readObject();
                 selectiony = (int) ois.readObject();
-                if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
-                {
-                    board2.changeColor(selectionx, selectiony, Color.RED);
-                }
-                else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
-                {
-                    board2.changeColor(selectionx, selectiony, Color.WHITE);
-                }
-                //board2.changeColor(selectionx, selectiony, Color.RED);
-            //}
+//                 if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
+//                 {
+//                     board2.changeColor(selectionx, selectiony, Color.RED);
+//                 }
+//                 else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
+//                 {
+//                     board2.changeColor(selectionx, selectiony, Color.WHITE);
+//                 }
+                board2.changeColor(selectionx, selectiony, Color.RED);
+            }
         }
         oos.close();
         ois.close();
@@ -87,7 +87,7 @@ public class Engine
         System.out.println("Please input your name");
         String name = scan.nextLine();
         System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
-        ship = new ShipSelection();
+        //ship = new ShipSelection();
         scan.nextLine();
         return true;
     }
