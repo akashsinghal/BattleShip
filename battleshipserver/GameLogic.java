@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.*;
 /**
  * Write a description of class GameLogic here.
  * 
@@ -10,12 +11,17 @@ public class GameLogic
     static int x;
     static int y;
 
+<<<<<<< HEAD
     static ShipBoard playerBoard;
     static ShipBoard checkBoard;
+=======
+    static SheetOfButtons playerBoard;
+    static SheetOfButtons checkBoard;
+    //static ArrayList<XYPoint> points = new ArrayList<XYPoint>();
+>>>>>>> origin/master
     public GameLogic ()
     {
-        //x=xpos;
-        //y=ypos;
+
     }
 
     public boolean isTaken()

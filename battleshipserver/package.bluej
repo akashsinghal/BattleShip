@@ -20,21 +20,35 @@ dependency6.type=UsesDependency
 dependency7.from=GameLogic
 dependency7.to=SheetOfButtons
 dependency7.type=UsesDependency
+dependency8.from=GameLogic
+dependency8.to=XYPoint
+dependency8.type=UsesDependency
 objectbench.height=76
-objectbench.width=668
+objectbench.width=678
 package.editor.height=400
 package.editor.width=570
+<<<<<<< HEAD
 package.editor.x=327
 package.editor.y=150
 package.numDependencies=7
+=======
+package.editor.x=212
+package.editor.y=189
+package.numDependencies=8
+>>>>>>> origin/master
 package.numTargets=6
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
 target1.editor.height=700
 target1.editor.width=900
+<<<<<<< HEAD
 target1.editor.x=280
 target1.editor.y=8
+=======
+target1.editor.x=252
+target1.editor.y=96
+>>>>>>> origin/master
 target1.height=50
 target1.name=XYPoint
 target1.naviview.expanded=true
@@ -42,12 +56,21 @@ target1.showInterface=false
 target1.type=ClassTarget
 target1.typeParameters=
 target1.width=80
+<<<<<<< HEAD
 target1.x=260
 target1.y=10
 target2.editor.height=700
 target2.editor.width=900
 target2.editor.x=24
 target2.editor.y=28
+=======
+target1.x=430
+target1.y=190
+target2.editor.height=700
+target2.editor.width=900
+target2.editor.x=24
+target2.editor.y=96
+>>>>>>> origin/master
 target2.height=50
 target2.name=SheetOfButtons
 target2.naviview.expanded=true
@@ -60,7 +83,11 @@ target2.y=210
 target3.editor.height=700
 target3.editor.width=900
 target3.editor.x=200
+<<<<<<< HEAD
 target3.editor.y=28
+=======
+target3.editor.y=96
+>>>>>>> origin/master
 target3.height=50
 target3.name=ShipBoard
 target3.naviview.expanded=true
@@ -72,8 +99,13 @@ target3.x=380
 target3.y=70
 target4.editor.height=700
 target4.editor.width=900
+<<<<<<< HEAD
 target4.editor.x=171
 target4.editor.y=28
+=======
+target4.editor.x=211
+target4.editor.y=96
+>>>>>>> origin/master
 target4.height=50
 target4.name=GameLogic
 target4.naviview.expanded=true
@@ -83,10 +115,17 @@ target4.typeParameters=
 target4.width=90
 target4.x=160
 target4.y=10
+<<<<<<< HEAD
 target5.editor.height=744
 target5.editor.width=1382
 target5.editor.x=-8
 target5.editor.y=-8
+=======
+target5.editor.height=700
+target5.editor.width=900
+target5.editor.x=76
+target5.editor.y=154
+>>>>>>> origin/master
 target5.height=50
 target5.name=Engine
 target5.naviview.expanded=true
@@ -99,7 +138,11 @@ target5.y=10
 target6.editor.height=700
 target6.editor.width=900
 target6.editor.x=155
+<<<<<<< HEAD
 target6.editor.y=28
+=======
+target6.editor.y=96
+>>>>>>> origin/master
 target6.height=50
 target6.name=ShipSelection
 target6.naviview.expanded=true
