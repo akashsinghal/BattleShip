@@ -53,7 +53,7 @@ public class ShipBoard extends JFrame
 
     public void changeColor(int x, int y, Color c)
     {
-        board[y] [x].setBackground(c);
+        board[x] [y].setBackground(c);
         repaint();
     }
 

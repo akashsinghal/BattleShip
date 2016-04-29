@@ -5,18 +5,14 @@
  * @author Shlok Gharia & Akash Singhal  
  * @version (a version number or a date)
  */
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Iterator;
-import java.util.Vector;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
 import java.util.*;
 import java.awt.*;
 public class Engine
 {
-    //static GameLogic gameLogic = new GameLogic();
     static Scanner scan = new Scanner(System.in);
     static int sendX;
     static int sendY;
@@ -39,7 +35,7 @@ public class Engine
         ObjectOutputStream oos = new ObjectOutputStream(fromClientSocket.getOutputStream());
 
         ObjectInputStream ois = new ObjectInputStream(fromClientSocket.getInputStream());
-        oos.writeObject("You are connected to Player 1!");
+        oos.writeObject("You are connected to Player 1! Please wait while Player 1 selects their ship configuration");
         System.out.println((String)ois.readObject());
         scan.nextLine();
         System.out.println("Now let's begin!");
@@ -48,14 +44,14 @@ public class Engine
         GameLogic gameLogic = new GameLogic(ship);
         if((boolean) ois.readObject())
         {
-            System.out.println("Let's start playing");
+            System.out.println("Let's start playing. Let Player 1 complete their selection first.");
             oos.writeObject("Let's start playing");
         }
         MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
         while(check)
         {
-            System.out.println("select a place to hit on the board and then hit enter");
+            System.out.println("Select a place to hit on the board and then hit enter");
             scan.nextLine();
             oos.writeObject(sendX);
             oos.writeObject(sendY);

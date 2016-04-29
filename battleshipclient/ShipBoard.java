@@ -39,7 +39,7 @@ public class ShipBoard extends JFrame
             {
                 Border thickBorder = new LineBorder(Color.BLACK, 3);
                 Button button = new Button(column,rows);
-                button.setBackground(Color.BLUE);
+                button.setBackground(Color.DARK_GRAY);
                 button.setOpaque(true);
                 button.setBorder(thickBorder);
                 board[rows][column] = button;

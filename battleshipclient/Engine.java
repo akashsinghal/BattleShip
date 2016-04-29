@@ -1,7 +1,6 @@
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.Socket;
+
+import java.io.*;
+import java.net.*;
 import java.util.*;
 import java.awt.*;
 public class Engine {

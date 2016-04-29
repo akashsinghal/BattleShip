@@ -5,18 +5,14 @@
  * @author Shlok Gharia & Akash Singhal  
  * @version (a version number or a date)
  */
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Iterator;
-import java.util.Vector;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
 import java.util.*;
 import java.awt.*;
 public class Engine
 {
-    //static GameLogic gameLogic = new GameLogic();
     static Scanner scan = new Scanner(System.in);
     static int sendX;
     static int sendY;
@@ -39,7 +35,7 @@ public class Engine
         ObjectOutputStream oos = new ObjectOutputStream(fromClientSocket.getOutputStream());
 
         ObjectInputStream ois = new ObjectInputStream(fromClientSocket.getInputStream());
-        oos.writeObject("You are connected to Player 1!");
+        oos.writeObject("You are connected to Player 1! Please wait while Player 1 selects their ship configuration");
         System.out.println((String)ois.readObject());
         scan.nextLine();
         System.out.println("Now let's begin!");
@@ -90,8 +86,9 @@ public class Engine
         System.out.println("Please input your name");
         String name = scan.nextLine();
         System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
-        //ship = new ShipSelection();
+        ship = new ShipSelection();
         scan.nextLine();
+        ship.setVisible(false);
         return true;
     }
 
