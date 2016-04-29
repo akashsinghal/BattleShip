@@ -16,12 +16,14 @@ import java.util.*;
 import java.awt.*;
 public class Engine
 {
+    //static GameLogic gameLogic = new GameLogic();
     static Scanner scan = new Scanner(System.in);
     static int sendX;
     static int sendY;
     static int selectionx;
     static int selectiony;
     static boolean check = true;
+    static ShipSelection ship;
     public static void main(String [] args)throws Exception
     {
 
@@ -43,6 +45,7 @@ public class Engine
         System.out.println("Now let's begin!");
         System.out.println("First, let's start by having you select where you want to place your battle ships");
         oos.writeObject(selections());
+        GameLogic gameLogic = new GameLogic(ship);
         if((boolean) ois.readObject())
         {
             System.out.println("Let's start playing");
@@ -56,14 +59,25 @@ public class Engine
             scan.nextLine();
             oos.writeObject(sendX);
             oos.writeObject(sendY);
+            if((boolean) ois.readObject()){board.changeColor(sendX, sendY, Color.RED);}
             System.out.println("Now let's wait for Player 2");
-            //oos.writeObject(true);
-            //if((boolean) ois.readObject())
-            //{
+            oos.writeObject(true);
+            if((boolean) ois.readObject())
+            {
                 selectionx = (int) ois.readObject();
                 selectiony = (int) ois.readObject();
-                board2.changeColor(selectionx, selectiony, Color.RED);
-            //}
+                 if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
+                 {
+                     board2.changeColor(selectionx, selectiony, Color.RED);
+                     oos.writeObject(true);
+                 }
+                else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
+                 {
+                     board2.changeColor(selectionx, selectiony, Color.WHITE);
+                     oos.writeObject(false);
+                 }
+                //board2.changeColor(selectionx, selectiony, Color.RED);
+            }
         }
         oos.close();
         ois.close();
@@ -73,9 +87,11 @@ public class Engine
 
     public static boolean selections()
     {
-        System.out.println("Please input name");
+        System.out.println("Please input your name");
         String name = scan.nextLine();
-        ShipSelection ship = new ShipSelection();
+        System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
+        //ship = new ShipSelection();
+        scan.nextLine();
         return true;
     }
 

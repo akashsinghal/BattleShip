@@ -16,7 +16,7 @@ import javax.swing.border.LineBorder;
  * @author Shlok Gharia
  * @version 1.1
  */
-public class SheetOfButtons extends JFrame
+public class MovesBoard extends JFrame
 {
     class Button extends JButton {
         int r = 0, c = 0;
@@ -29,7 +29,7 @@ public class SheetOfButtons extends JFrame
 
     private static Button[][] board;
     static Engine eng = new Engine();
-    public SheetOfButtons()
+    public MovesBoard()
     {
         this.setTitle("Moves Board Player 1");
         this.setLayout(new GridLayout(10,10));
@@ -90,6 +90,11 @@ public class SheetOfButtons extends JFrame
         repaint();
         this.setSize(500,500);
         this.setVisible(true);
+    }
+    public void changeColor(int x, int y, Color c)
+    {
+        board[y] [x].setBackground(c);
+        repaint();
     }
 
 }

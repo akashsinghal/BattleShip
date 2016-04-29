@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=
+comment0.target=boolean\ isTaken()
+comment1.params=xPos\ yPos
+comment1.target=boolean\ hitOrMiss(int,\ int)
+numComments=2

@@ -28,7 +28,7 @@ public class SheetOfButtons extends JFrame
     }
 
     private static Button[][] board;
-    static ComplexSocketClient eng = new ComplexSocketClient();
+    static Engine eng = new Engine();
     public SheetOfButtons()
     {
          this.setTitle("Moves Board");
@@ -52,6 +52,7 @@ public class SheetOfButtons extends JFrame
 
                         private void draw(int y, int x)
                         {
+                            eng.getXY(y, x);
                             if(board[x][y].getBackground() == Color.BLUE) 
                             {
                                 board[x][y].setBackground(Color.WHITE);
@@ -89,5 +90,10 @@ public class SheetOfButtons extends JFrame
         repaint();
         this.setSize(500,500);
         this.setVisible(true);
+    }
+       public void changeColor(int x, int y, Color c)
+    {
+        board[y] [x].setBackground(c);
+        repaint();
     }
 }

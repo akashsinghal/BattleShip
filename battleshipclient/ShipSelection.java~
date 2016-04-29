@@ -31,7 +31,7 @@ public class ShipSelection extends JFrame
     private static ArrayList<XYPoint> points = new ArrayList<XYPoint>();
     public ShipSelection()
     {
-        this.setTitle("Ship Selection Board Player 1");
+        this.setTitle("Moves Board Player 1");
         this.setLayout(new GridLayout(10,10));
         board = new Button[10][10];
         for(int rows=0; rows < board.length;rows++)
@@ -52,11 +52,10 @@ public class ShipSelection extends JFrame
 
                         private void draw(int y, int x)
                         {
-                            
+                            points.add(new XYPoint(y, x));
                             if(board[x][y].getBackground() == Color.BLUE) 
                             {
                                 board[x][y].setBackground(Color.BLACK);
-                                points.add(new XYPoint(y, x));
                             }
                             else if(board[x][y].getBackground() == Color.GREEN)
                             {

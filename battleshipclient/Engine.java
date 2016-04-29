@@ -4,13 +4,15 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.*;
 import java.awt.*;
-public class ComplexSocketClient {
+public class Engine {
     static Scanner scan = new Scanner(System.in);
     static int selectionx;
     static int selectiony;
     static int sendX;
     static int sendY;
     static boolean check =true;
+    static ShipSelection ship;
+    static GameLogic gameLogic;
     public static void main(String args[])throws Exception {
 
         Socket socket1;
@@ -21,8 +23,7 @@ public class ComplexSocketClient {
 
         ObjectInputStream ois = new ObjectInputStream(socket1.getInputStream());
 
-        ObjectOutputStream oos = new ObjectOutputStream(
-                socket1.getOutputStream());
+        ObjectOutputStream oos = new ObjectOutputStream(socket1.getOutputStream());
         oos.writeObject("You are connected to Player 2!");
 
         str= (String) ois.readObject();
@@ -31,16 +32,26 @@ public class ComplexSocketClient {
         if((boolean) ois.readObject())
         {
             oos.writeObject(selections());
+            gameLogic = new GameLogic(ship);
         }
         System.out.println((String) ois.readObject());
-        final SheetOfButtons board = new SheetOfButtons();
+        final MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
         while(check)
         {
             selectionx = (int) ois.readObject();
             selectiony = (int) ois.readObject();
-            board2.changeColor(selectionx, selectiony, Color.RED);
-           
+            if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
+            {
+                board2.changeColor(selectionx, selectiony, Color.RED);
+                oos.writeObject(true);
+            }
+            else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
+            {
+                board2.changeColor(selectionx, selectiony, Color.WHITE);
+                oos.writeObject(false);
+            }
+
             if((boolean) ois.readObject())
             {
                 oos.writeObject(true);
@@ -48,8 +59,8 @@ public class ComplexSocketClient {
                 scan.nextLine();
                 oos.writeObject(sendX);
                 oos.writeObject(sendY);
+                if((boolean) ois.readObject()){board.changeColor(sendX, sendY, Color.RED);}
                 System.out.println("Now let's wait for Player 1");
-                //oos.writeObject(true);
             }
         }
         ois.close();
@@ -59,12 +70,15 @@ public class ComplexSocketClient {
 
     public static boolean selections()
     {
-        System.out.println("Alright, let's choose where to put your ships");
+        System.out.println("Alright, now please input your name");
         String name = scan.nextLine();
+        System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
+        ship = new ShipSelection();
+        scan.nextLine();
         return true;
     }
-    
-     public static void getXY(int x, int y)
+
+    public static void getXY(int x, int y)
     {
         sendX= x;
         sendY= y;

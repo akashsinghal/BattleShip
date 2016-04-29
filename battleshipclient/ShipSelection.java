@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import java.util.*;
 
 /**
  * Houses all of the commands for the rows of buttons, from creating them to changing the colors
@@ -16,7 +17,7 @@ import javax.swing.border.LineBorder;
  * @author Shlok Gharia
  * @version 1.1
  */
-public class SheetOfButtons extends JFrame
+public class ShipSelection extends JFrame
 {
     class Button extends JButton {
         int r = 0, c = 0;
@@ -26,12 +27,11 @@ public class SheetOfButtons extends JFrame
             this.c = c;
         }
     }
-
     private static Button[][] board;
-    static ComplexSocketClient eng = new ComplexSocketClient();
-    public SheetOfButtons()
+    private static ArrayList<XYPoint> points = new ArrayList<XYPoint>();
+    public ShipSelection()
     {
-         this.setTitle("Moves Board");
+        this.setTitle("Ship Selection Board Player 2");
         this.setLayout(new GridLayout(10,10));
         board = new Button[10][10];
         for(int rows=0; rows < board.length;rows++)
@@ -47,15 +47,15 @@ public class SheetOfButtons extends JFrame
                     {
                         public void actionPerformed(ActionEvent event)
                         {
-                            draw(((Button) event.getSource()).c, ((Button) event.getSource()).r);;
+                            draw(((Button) event.getSource()).c, ((Button) event.getSource()).r);
                         }
 
                         private void draw(int y, int x)
                         {
-                            eng.getXY(y, x);
+                            points.add(new XYPoint(y, x));
                             if(board[x][y].getBackground() == Color.BLUE) 
                             {
-                                board[x][y].setBackground(Color.WHITE);
+                                board[x][y].setBackground(Color.BLACK);
                             }
                             else if(board[x][y].getBackground() == Color.GREEN)
                             {
@@ -74,7 +74,7 @@ public class SheetOfButtons extends JFrame
                         {
                             if(board[x][y].getBackground() == Color.BLUE) 
                             {
-                                board[x][y].setBackground(Color.WHITE);
+                                board[x][y].setBackground(Color.BLACK);
                             }
                             else if(board[x][y].getBackground() == Color.GREEN)
                             {
@@ -90,5 +90,20 @@ public class SheetOfButtons extends JFrame
         repaint();
         this.setSize(500,500);
         this.setVisible(true);
+    }
+
+    public ArrayList<XYPoint> getPoints()
+    {
+        return points;
+    }
+
+    public Button[][] getBoard()
+    {
+        return board;
+    }
+
+    public Button getSpecificBoard(int xPos, int yPos)
+    {
+        return board[xPos][yPos];
     }
 }

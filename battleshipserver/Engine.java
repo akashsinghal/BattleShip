@@ -51,7 +51,7 @@ public class Engine
             System.out.println("Let's start playing");
             oos.writeObject("Let's start playing");
         }
-        SheetOfButtons board = new SheetOfButtons();
+        MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
         while(check)
         {
@@ -59,21 +59,24 @@ public class Engine
             scan.nextLine();
             oos.writeObject(sendX);
             oos.writeObject(sendY);
+            if((boolean) ois.readObject()){board.changeColor(sendX, sendY, Color.RED);}
             System.out.println("Now let's wait for Player 2");
             oos.writeObject(true);
             if((boolean) ois.readObject())
             {
                 selectionx = (int) ois.readObject();
                 selectiony = (int) ois.readObject();
-//                 if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
-//                 {
-//                     board2.changeColor(selectionx, selectiony, Color.RED);
-//                 }
-//                 else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
-//                 {
-//                     board2.changeColor(selectionx, selectiony, Color.WHITE);
-//                 }
-                board2.changeColor(selectionx, selectiony, Color.RED);
+                 if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
+                 {
+                     board2.changeColor(selectionx, selectiony, Color.RED);
+                     oos.writeObject(true);
+                 }
+                else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
+                 {
+                     board2.changeColor(selectionx, selectiony, Color.WHITE);
+                     oos.writeObject(false);
+                 }
+                //board2.changeColor(selectionx, selectiony, Color.RED);
             }
         }
         oos.close();

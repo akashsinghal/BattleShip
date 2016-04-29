@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.params=
-comment0.target=SheetOfButtons()
+comment0.target=MovesBoard()
 comment1.params=event
 comment1.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment2.params=y\ x
@@ -9,4 +9,6 @@ comment3.params=event
 comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment4.params=y\ x
 comment4.target=void\ draw(int,\ int)
-numComments=5
+comment5.params=x\ y\ c
+comment5.target=void\ changeColor(int,\ int,\ java.awt.Color)
+numComments=6

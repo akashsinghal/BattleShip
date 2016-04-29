@@ -4,7 +4,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.*;
 import java.awt.*;
-public class ComplexSocketClient {
+public class Engine {
     static Scanner scan = new Scanner(System.in);
     static int selectionx;
     static int selectiony;
@@ -73,7 +73,7 @@ public class ComplexSocketClient {
         System.out.println("Alright, now please input your name");
         String name = scan.nextLine();
         System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
-        //ship = new ShipSelection();
+        ship = new ShipSelection();
         scan.nextLine();
         return true;
     }
