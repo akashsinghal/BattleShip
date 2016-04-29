@@ -51,38 +51,18 @@ public class ShipSelection extends JFrame
                         }
 
                         private void draw(int y, int x)
-                        {
-                            points.add(new XYPoint(y, x));
+                        {                             
                             if(board[x][y].getBackground() == Color.BLUE) 
                             {
                                 board[x][y].setBackground(Color.BLACK);
+                                points.add(new XYPoint(x, y));
                             }
-                            else if(board[x][y].getBackground() == Color.GREEN)
+                            else if(board[x][y].getBackground() == Color.BLACK)
                             {
-                                board[x][y].setBackground(Color.RED);
+                                board[x][y].setBackground(Color.BLUE);
                             }
                         }
                     });
-                button.addActionListener(new ActionListener()
-                    {
-                        public void actionPerformed(ActionEvent event)
-                        {
-                            //erase (((Button) event.getSource()).c, ((Button) event.getSource()).r, event);
-                        }
-
-                        private void draw(int y, int x)
-                        {
-                            if(board[x][y].getBackground() == Color.BLUE) 
-                            {
-                                board[x][y].setBackground(Color.BLACK);
-                            }
-                            else if(board[x][y].getBackground() == Color.GREEN)
-                            {
-                                board[x][y].setBackground(Color.RED);
-                            }
-                        }
-                    });
-
                 board[rows][column] = button;
                 this.add(button);
             }

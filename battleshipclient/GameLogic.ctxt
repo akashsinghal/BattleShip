@@ -1,6 +1,8 @@
 #BlueJ class context
-comment0.params=
-comment0.target=boolean\ isTaken()
-comment1.params=xPos\ yPos
-comment1.target=boolean\ hitOrMiss(int,\ int)
-numComments=2
+comment0.params=ship
+comment0.target=GameLogic(ShipSelection)
+comment1.params=
+comment1.target=boolean\ isTaken()
+comment2.params=xPos\ yPos
+comment2.target=boolean\ hitOrMiss(int,\ int)
+numComments=3

@@ -20,6 +20,7 @@ public class Engine
     static int selectiony;
     static boolean check = true;
     static ShipSelection ship;
+    static ArrayList<XYPoint> list;
     public static void main(String [] args)throws Exception
     {
 
@@ -41,17 +42,19 @@ public class Engine
         System.out.println("Now let's begin!");
         System.out.println("First, let's start by having you select where you want to place your battle ships");
         oos.writeObject(selections());
+        
         GameLogic gameLogic = new GameLogic(ship);
         if((boolean) ois.readObject())
         {
-            System.out.println("Let's start playing");
+            System.out.println("Let's start playing. Let Player 1 complete their selection first.");
             oos.writeObject("Let's start playing");
         }
         MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
+        board2.changeColor(list.get(0).getXPosition(), list.get(0).getXPosition(), Color.BLACK);
         while(check)
         {
-            System.out.println("select a place to hit on the board and then hit enter");
+            System.out.println("Select a place to hit on the board and then hit enter");
             scan.nextLine();
             oos.writeObject(sendX);
             oos.writeObject(sendY);
@@ -89,6 +92,7 @@ public class Engine
         ship = new ShipSelection();
         scan.nextLine();
         ship.setVisible(false);
+        list = ship.getPoints();
         return true;
     }
 

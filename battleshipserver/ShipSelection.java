@@ -38,9 +38,9 @@ public class ShipSelection extends JFrame
         {
             for(int column=0; column < board[rows].length; column++)
             {
-                Border thickBorder = new LineBorder(Color.BLACK, 3);
+                Border thickBorder = new LineBorder(Color.BLACK, 1);
                 Button button = new Button(column,rows);
-                button.setBackground(Color.BLUE);
+                button.setBackground(Color.DARK_GRAY);
                 button.setOpaque(true);
                 button.setBorder(thickBorder);
                 button.addActionListener(new ActionListener()
@@ -56,7 +56,7 @@ public class ShipSelection extends JFrame
                             if(board[x][y].getBackground() == Color.BLUE) 
                             {
                                 board[x][y].setBackground(Color.BLACK);
-                                points.add(new XYPoint(y, x));
+                                points.add(new XYPoint(x, y));
                             }
                             else if(board[x][y].getBackground() == Color.BLACK)
                             {

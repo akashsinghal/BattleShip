@@ -1,4 +1,5 @@
 import java.awt.Color;
+import javax.swing.*;
 /**
  * Write a description of class GameLogic here.
  * 
@@ -29,6 +30,7 @@ public class GameLogic
         y=yPos;
         if(checkBoard.getSpecificBoard(xPos,yPos).getBackground()== Color.BLACK)
         {
+            JOptionPane.showMessageDialog(null, "YOU WERE HIT!");
             return true;
         }
         else if(checkBoard.getSpecificBoard(xPos,yPos).getBackground()== Color.BLUE)

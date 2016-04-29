@@ -1,4 +1,4 @@
-
+import java.awt.Color;
 /**
  * Write a description of class GameLogic here.
  * 
@@ -7,27 +7,42 @@
  */
 public class GameLogic
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    static int x;
+    static int y;
 
-    /**
-     * Constructor for objects of class GameLogic
-     */
-    public GameLogic()
+    static ShipSelection checkBoard;
+    public GameLogic (ShipSelection ship)
     {
-        // initialise instance variables
-        x = 0;
+        //x=xpos;
+        //y=ypos;
+        checkBoard = ship;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    public boolean isTaken()
     {
-        // put your code here
-        return x + y;
+        return true; 
     }
+
+    public boolean hitOrMiss(int xPos, int yPos)
+    {
+        x=xPos;
+        y=yPos;
+        if(checkBoard.getSpecificBoard(xPos,yPos).getBackground()== Color.BLACK)
+        {
+            JOptionPane.showMessageDialog(null, "YOU WERE HIT!");
+            return true;
+        }
+        else if(checkBoard.getSpecificBoard(xPos,yPos).getBackground()== Color.BLUE)
+        {
+            return false;
+        }
+        return false;
+    }
+
+//     public boolean endGame()
+//     {
+//         for(int x; x<
+//         return true;
+//     }
+    //hello
 }
