@@ -90,8 +90,9 @@ public class Engine
         System.out.println("Please input your name");
         String name = scan.nextLine();
         System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
-        //ship = new ShipSelection();
+        ship = new ShipSelection();
         scan.nextLine();
+        ship.setVisible(false);
         return true;
     }
 

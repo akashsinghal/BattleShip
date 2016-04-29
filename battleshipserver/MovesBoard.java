@@ -52,7 +52,7 @@ public class MovesBoard extends JFrame
 
                         private void draw(int y, int x)
                         {
-                            eng.getXY(y, x);
+                            eng.getXY(x, y);
                             if(board[x][y].getBackground() == Color.BLUE) 
                             {
                                 board[x][y].setBackground(Color.WHITE);
@@ -93,7 +93,7 @@ public class MovesBoard extends JFrame
     }
     public void changeColor(int x, int y, Color c)
     {
-        board[y] [x].setBackground(c);
+        board[x] [y].setBackground(c);
         repaint();
     }
 

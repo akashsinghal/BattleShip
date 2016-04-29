@@ -51,7 +51,7 @@ public class Engine
             System.out.println("Let's start playing");
             oos.writeObject("Let's start playing");
         }
-        SheetOfButtons board = new SheetOfButtons();
+        MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
         while(check)
         {

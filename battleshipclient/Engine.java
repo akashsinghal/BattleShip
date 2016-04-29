@@ -75,6 +75,7 @@ public class Engine {
         System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
         ship = new ShipSelection();
         scan.nextLine();
+        ship.setVisible(false);
         return true;
     }
 

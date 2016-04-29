@@ -35,7 +35,7 @@ public class Engine {
             gameLogic = new GameLogic(ship);
         }
         System.out.println((String) ois.readObject());
-        final SheetOfButtons board = new SheetOfButtons();
+        final MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
         while(check)
         {
