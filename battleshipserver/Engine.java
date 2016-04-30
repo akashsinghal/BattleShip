@@ -49,12 +49,12 @@ public class Engine {
                 board2.changeColor(selectionx, selectiony, Color.RED);
                 oos.writeObject(true);
                 for(int i=0; i<list.size(); i++)
-                     {
-                         if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
-                         {
-                             list.remove(i);
-                          }
-                        }
+                {
+                    if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
+                    {
+                        list.remove(i);
+                    }
+                }
             }
             else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
             {
