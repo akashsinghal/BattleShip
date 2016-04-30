@@ -24,7 +24,7 @@ public class Engine {
         ObjectInputStream ois = new ObjectInputStream(socket1.getInputStream());
 
         ObjectOutputStream oos = new ObjectOutputStream(socket1.getOutputStream());
-        oos.writeObject("You are connected to Player 2!");
+        oos.writeObject("You are connected to Player 2!  Please wait while Player 1 selects their ship configuration");
 
         str= (String) ois.readObject();
         System.out.println(str);

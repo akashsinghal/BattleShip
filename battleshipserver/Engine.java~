@@ -19,7 +19,7 @@ public class Engine {
         int portNumber = 1777;
         String str = "";
 
-        socket1 = new Socket(InetAddress.getLocalHost(), portNumber);
+        socket1 = new Socket(", portNumber);
 
         ObjectInputStream ois = new ObjectInputStream(socket1.getInputStream());
 
@@ -49,12 +49,12 @@ public class Engine {
                 board2.changeColor(selectionx, selectiony, Color.RED);
                 oos.writeObject(true);
                 for(int i=0; i<list.size(); i++)
-                     {
-                         if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
-                         {
-                             list.remove(i);
-                          }
-                        }
+                {
+                    if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
+                    {
+                        list.remove(i);
+                    }
+                }
             }
             else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
             {
