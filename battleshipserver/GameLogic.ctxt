@@ -5,4 +5,6 @@ comment1.params=
 comment1.target=boolean\ isTaken()
 comment2.params=xPos\ yPos
 comment2.target=boolean\ hitOrMiss(int,\ int)
-numComments=3
+comment3.params=list
+comment3.target=boolean\ endGame(java.util.ArrayList)
+numComments=4

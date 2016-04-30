@@ -52,6 +52,8 @@ public class Engine
         MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
         board2.changeColor(list.get(0).getXPosition(), list.get(0).getXPosition(), Color.BLACK);
+        board2.changeColor(list.get(1).getXPosition(), list.get(1).getXPosition(), Color.BLACK);
+        board2.changeColor(list.get(2).getXPosition(), list.get(2).getXPosition(), Color.BLACK);
         while(check)
         {
             System.out.println("Select a place to hit on the board and then hit enter");

@@ -12,6 +12,7 @@ public class Engine {
     static boolean check =true;
     static ShipSelection ship;
     static GameLogic gameLogic;
+    static ArrayList <XYPoint> list;
     public static void main(String args[])throws Exception {
 
         Socket socket1;
@@ -34,8 +35,11 @@ public class Engine {
             gameLogic = new GameLogic(ship);
         }
         System.out.println((String) ois.readObject());
-        final MovesBoard board = new MovesBoard();
+        MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
+        board2.changeColor(list.get(0).getXPosition(), list.get(0).getXPosition(), Color.BLACK);
+        board2.changeColor(list.get(1).getXPosition(), list.get(1).getXPosition(), Color.BLACK);
+        board2.changeColor(list.get(2).getXPosition(), list.get(2).getXPosition(), Color.BLACK);
         while(check)
         {
             selectionx = (int) ois.readObject();
@@ -44,6 +48,13 @@ public class Engine {
             {
                 board2.changeColor(selectionx, selectiony, Color.RED);
                 oos.writeObject(true);
+                for(int i=0; i<list.size(); i++)
+                     {
+                         if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
+                         {
+                             list.remove(i);
+                          }
+                        }
             }
             else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
             {
@@ -61,6 +72,7 @@ public class Engine {
                 if((boolean) ois.readObject()){board.changeColor(sendX, sendY, Color.RED);}
                 System.out.println("Now let's wait for Player 1");
             }
+            check=gameLogic.endGame(list);
         }
         ois.close();
         oos.close();

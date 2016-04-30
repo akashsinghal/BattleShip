@@ -1,5 +1,6 @@
 import java.awt.Color;
 import javax.swing.*;
+import java.util.*;
 /**
  * Write a description of class GameLogic here.
  * 
@@ -40,10 +41,12 @@ public class GameLogic
         return false;
     }
 
-//     public boolean endGame()
-//     {
-//         for(int x; x<
-//         return true;
-//     }
+    public boolean endGame(ArrayList<XYPoint> list )
+     {
+         if(list.size() ==0){
+         return false;
+        }
+        else{return false;}
+     }
     //hello
 }

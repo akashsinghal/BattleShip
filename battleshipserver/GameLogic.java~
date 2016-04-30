@@ -30,8 +30,8 @@ public class GameLogic
         y=yPos;
         if(checkBoard.getSpecificBoard(xPos,yPos).getBackground()== Color.BLACK)
         {
-            return true;
             JOptionPane.showMessageDialog(null, "YOU WERE HIT!");
+            return true;
         }
         else if(checkBoard.getSpecificBoard(xPos,yPos).getBackground()== Color.BLUE)
         {
