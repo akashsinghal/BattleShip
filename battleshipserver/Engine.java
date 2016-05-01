@@ -40,20 +40,21 @@ public class Engine
         System.out.println((String)ois.readObject());
         scan.nextLine();
         System.out.println("Now let's begin!");
-        System.out.println("First, let's start by having you select where you want to place your battle ships");
+        System.out.println("First, let's setup the game");
         oos.writeObject(selections());
         
         GameLogic gameLogic = new GameLogic(ship);
         if((boolean) ois.readObject())
         {
-            System.out.println("Let's start playing. Let Player 1 complete their selection first.");
-            oos.writeObject("Let's start playing");
+            System.out.println("Let's start playing.");
+            oos.writeObject("Let's start playing. Let Player 1 make their move first.");
         }
         MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
-        board2.changeColor(list.get(0).getXPosition(), list.get(0).getXPosition(), Color.BLACK);
-        board2.changeColor(list.get(1).getXPosition(), list.get(1).getXPosition(), Color.BLACK);
-        board2.changeColor(list.get(2).getXPosition(), list.get(2).getXPosition(), Color.BLACK);
+        
+        board2.changeColor(list.get(0).getXPosition(), list.get(0).getYPosition(), Color.BLACK);
+        board2.changeColor(list.get(1).getXPosition(), list.get(1).getYPosition(), Color.BLACK);
+        board2.changeColor(list.get(2).getXPosition(), list.get(2).getYPosition(), Color.BLACK);
         while(check)
         {
             System.out.println("Select a place to hit on the board and then hit enter");
@@ -71,13 +72,13 @@ public class Engine
                  {
                      board2.changeColor(selectionx, selectiony, Color.RED);
                      oos.writeObject(true);
-                     for(int i=0; i<list.size(); i++)
-                     {
-                         if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
-                         {
-                             list.remove(i);
-                          }
-                        }
+                      for(int i=0; i<list.size(); i++)
+                      {
+                          if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
+                          {
+                              list.remove(i);
+                           }
+                         }
                  }
                 else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
                  {

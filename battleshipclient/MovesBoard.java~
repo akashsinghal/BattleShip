@@ -63,26 +63,7 @@ public class MovesBoard extends JFrame
                             }
                         }
                     });
-                button.addActionListener(new ActionListener()
-                    {
-                        public void actionPerformed(ActionEvent event)
-                        {
-                            //erase (((Button) event.getSource()).c, ((Button) event.getSource()).r, event);
-                        }
-
-                        private void draw(int y, int x)
-                        {
-                            if(board[x][y].getBackground() == Color.BLUE) 
-                            {
-                                board[x][y].setBackground(Color.WHITE);
-                            }
-                            else if(board[x][y].getBackground() == Color.GREEN)
-                            {
-                                board[x][y].setBackground(Color.RED);
-                            }
-                        }
-                    });
-
+                
                 board[rows][column] = button;
                 this.add(button);
             }

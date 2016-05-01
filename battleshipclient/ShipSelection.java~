@@ -51,8 +51,7 @@ public class ShipSelection extends JFrame
                         }
 
                         private void draw(int y, int x)
-                        {
-                             
+                        {                             
                             if(board[x][y].getBackground() == Color.BLUE) 
                             {
                                 board[x][y].setBackground(Color.BLACK);

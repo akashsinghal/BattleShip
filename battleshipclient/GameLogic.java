@@ -46,7 +46,7 @@ public class GameLogic
          if(list.size() ==0){
          return false;
         }
-        else{return false;}
+        else{return true;}
      }
     //hello
 }

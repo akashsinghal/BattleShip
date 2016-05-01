@@ -38,7 +38,7 @@ public class MovesBoard extends JFrame
         {
             for(int column=0; column < board[rows].length; column++)
             {
-                Border thickBorder = new LineBorder(Color.BLACK, 3);
+                Border thickBorder = new LineBorder(Color.BLACK, 1);
                 Button button = new Button(column,rows);
                 button.setBackground(Color.BLUE);
                 button.setOpaque(true);

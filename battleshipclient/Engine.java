@@ -37,9 +37,9 @@ public class Engine {
         System.out.println((String) ois.readObject());
         MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
-        board2.changeColor(list.get(0).getXPosition(), list.get(0).getXPosition(), Color.BLACK);
-        board2.changeColor(list.get(1).getXPosition(), list.get(1).getXPosition(), Color.BLACK);
-        board2.changeColor(list.get(2).getXPosition(), list.get(2).getXPosition(), Color.BLACK);
+        board2.changeColor(list.get(0).getXPosition(), list.get(0).getYPosition(), Color.BLACK);
+        board2.changeColor(list.get(1).getXPosition(), list.get(1).getYPosition(), Color.BLACK);
+        board2.changeColor(list.get(2).getXPosition(), list.get(2).getYPosition(), Color.BLACK);
         while(check)
         {
             selectionx = (int) ois.readObject();
@@ -81,12 +81,13 @@ public class Engine {
 
     public static boolean selections()
     {
-        System.out.println("Alright, now please input your name");
+        System.out.println("Alright, Now let's setup up the game. Please input your name");
         String name = scan.nextLine();
         System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
         ship = new ShipSelection();
         scan.nextLine();
         ship.setVisible(false);
+        list=ship.getPoints();
         return true;
     }
 

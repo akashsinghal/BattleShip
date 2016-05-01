@@ -40,7 +40,7 @@ public class ShipSelection extends JFrame
             {
                 Border thickBorder = new LineBorder(Color.BLACK, 1);
                 Button button = new Button(column,rows);
-                button.setBackground(Color.DARK_GRAY);
+                button.setBackground(Color.BLUE);
                 button.setOpaque(true);
                 button.setBorder(thickBorder);
                 button.addActionListener(new ActionListener()
@@ -57,6 +57,7 @@ public class ShipSelection extends JFrame
                             {
                                 board[x][y].setBackground(Color.BLACK);
                                 points.add(new XYPoint(x, y));
+                                //System.out.println(x + " , " + y);
                             }
                             else if(board[x][y].getBackground() == Color.BLACK)
                             {
