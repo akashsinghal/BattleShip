@@ -69,7 +69,10 @@ public class Engine {
                 scan.nextLine();
                 oos.writeObject(sendX);
                 oos.writeObject(sendY);
-                if((boolean) ois.readObject()){board.changeColor(sendX, sendY, Color.RED);}
+                if((boolean) ois.readObject()){
+                    board.changeColor(sendX, sendY, Color.RED);
+                    if((boolean) ois.readObject()){System.exit(0);}
+                }
                 System.out.println("Now let's wait for Player 1");
             }
             check=gameLogic.endGame(list);
@@ -81,7 +84,7 @@ public class Engine {
 
     public static boolean selections()
     {
-        System.out.println("Alright, now please input your name");
+        System.out.println("Alright, Now let's setup up the game. Please input your name");
         String name = scan.nextLine();
         System.out.println("Now, select 3 ships from the selection board (Press enter when done)");
         ship = new ShipSelection();

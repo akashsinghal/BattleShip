@@ -11,6 +11,7 @@ import java.net.*;
 import java.util.*;
 import java.util.*;
 import java.awt.*;
+import javax.swing.*;
 public class Engine
 {
     static Scanner scan = new Scanner(System.in);
@@ -61,7 +62,13 @@ public class Engine
             scan.nextLine();
             oos.writeObject(sendX);
             oos.writeObject(sendY);
-            if((boolean) ois.readObject()){board.changeColor(sendX, sendY, Color.RED);}
+            if((boolean) ois.readObject()){
+                board.changeColor(sendX, sendY, Color.RED);
+                if((boolean) ois.readObject()){
+                    JOptionPane.showMessageDialog(null, "You Won!");
+                    System.exit(0);
+                }
+            }
             System.out.println("Now let's wait for Player 2");
             oos.writeObject(true);
             if((boolean) ois.readObject())
@@ -79,6 +86,11 @@ public class Engine
                               list.remove(i);
                            }
                          }
+                     if(gameLogic.endGame(list)){
+                         JOptionPane.showMessageDialog(null, "You Lost");
+                         check=gameLogic.endGame(list);
+                         oos.writeObject(true);
+                        }
                  }
                 else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
                  {
