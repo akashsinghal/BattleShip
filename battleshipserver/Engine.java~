@@ -11,6 +11,7 @@ import java.net.*;
 import java.util.*;
 import java.util.*;
 import java.awt.*;
+import javax.swing.*;
 public class Engine
 {
     static Scanner scan = new Scanner(System.in);
@@ -85,7 +86,7 @@ public class Engine
                               list.remove(i);
                            }
                          }
-                     if(gameLogic.endGame(list)){
+                     if(!gameLogic.endGame(list)){
                          JOptionPane.showMessageDialog(null, "You Lost");
                          check=gameLogic.endGame(list);
                          oos.writeObject(true);

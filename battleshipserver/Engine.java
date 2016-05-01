@@ -37,7 +37,7 @@ public class Engine
         ObjectOutputStream oos = new ObjectOutputStream(fromClientSocket.getOutputStream());
 
         ObjectInputStream ois = new ObjectInputStream(fromClientSocket.getInputStream());
-        oos.writeObject("You are connected to Player 2!");
+        oos.writeObject("You are connected to Player 1! Please wait for Player 1 to finish setup.");
         System.out.println((String)ois.readObject());
         scan.nextLine();
         System.out.println("Now let's begin!");
@@ -86,7 +86,7 @@ public class Engine
                               list.remove(i);
                            }
                          }
-                     if(gameLogic.endGame(list)){
+                     if(!gameLogic.endGame(list)){
                          JOptionPane.showMessageDialog(null, "You Lost");
                          check=gameLogic.endGame(list);
                          oos.writeObject(true);
