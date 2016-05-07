@@ -3,6 +3,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.awt.*;
+import javax.swing.*;
 public class Engine {
     static Scanner scan = new Scanner(System.in);
     static int selectionx;
@@ -55,6 +56,11 @@ public class Engine {
                              list.remove(i);
                           }
                         }
+                if(gameLogic.endGame(list)){
+                         JOptionPane.showMessageDialog(null, "You Lost");
+                         check=gameLogic.endGame(list);
+                         oos.writeObject(true);
+                 }
             }
             else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
             {
@@ -71,7 +77,10 @@ public class Engine {
                 oos.writeObject(sendY);
                 if((boolean) ois.readObject()){
                     board.changeColor(sendX, sendY, Color.RED);
-                    if((boolean) ois.readObject()){System.exit(0);}
+                    if((boolean) ois.readObject()){
+                        JOptionPane.showMessageDialog(null, "You Won!");
+                        System.exit(0);
+                    }
                 }
                 System.out.println("Now let's wait for Player 1");
             }

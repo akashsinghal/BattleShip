@@ -19,7 +19,7 @@ public class Engine
     static int sendY;
     static int selectionx;
     static int selectiony;
-    static boolean check = true;
+    static boolean check = false;
     static ShipSelection ship;
     static ArrayList<XYPoint> list;
     public static void main(String [] args)throws Exception
@@ -39,24 +39,22 @@ public class Engine
         ObjectInputStream ois = new ObjectInputStream(fromClientSocket.getInputStream());
         oos.writeObject("You are connected to Player 1! Please wait for Player 1 to finish setup.");
         System.out.println((String)ois.readObject());
-        scan.nextLine();
-        System.out.println("Now let's begin!");
-        System.out.println("First, let's setup the game");
         oos.writeObject(selections());
-        
+
         GameLogic gameLogic = new GameLogic(ship);
         if((boolean) ois.readObject())
-        {
+        { 
             System.out.println("Let's start playing.");
+            System.out.println("----------------------------------------------");
             oos.writeObject("Let's start playing. Let Player 1 make their move first.");
         }
         MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
-        
+
         board2.changeColor(list.get(0).getXPosition(), list.get(0).getYPosition(), Color.BLACK);
         board2.changeColor(list.get(1).getXPosition(), list.get(1).getYPosition(), Color.BLACK);
         board2.changeColor(list.get(2).getXPosition(), list.get(2).getYPosition(), Color.BLACK);
-        while(check)
+        while(!check)
         {
             System.out.println("Select a place to hit on the board and then hit enter");
             scan.nextLine();
@@ -66,6 +64,8 @@ public class Engine
                 board.changeColor(sendX, sendY, Color.RED);
                 if((boolean) ois.readObject()){
                     JOptionPane.showMessageDialog(null, "You Won!");
+                    board.setVisible(false);
+                    board2.setVisible(false);
                     System.exit(0);
                 }
             }
@@ -75,29 +75,31 @@ public class Engine
             {
                 selectionx = (int) ois.readObject();
                 selectiony = (int) ois.readObject();
-                 if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
-                 {
-                     board2.changeColor(selectionx, selectiony, Color.RED);
-                     oos.writeObject(true);
-                      for(int i=0; i<list.size(); i++)
-                      {
-                          if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
-                          {
-                              list.remove(i);
-                           }
-                         }
-                     if(!gameLogic.endGame(list)){
-                         JOptionPane.showMessageDialog(null, "You Lost");
-                         check=gameLogic.endGame(list);
-                         oos.writeObject(true);
+                if(gameLogic.hitOrMiss(selectionx,selectiony)==true)
+                {
+                    board2.changeColor(selectionx, selectiony, Color.RED);
+                    oos.writeObject(true);
+                    for(int i=0; i<list.size(); i++)
+                    {
+                        if((list.get(i).getXPosition() == selectionx) && (list.get(i).getYPosition() == selectiony))
+                        {
+                            list.remove(i);
                         }
-                 }
+                    }
+                    if(gameLogic.endGame(list)){
+                        oos.writeObject(true);
+                        JOptionPane.showMessageDialog(null, "You Lost");
+                        board.setVisible(false);
+                        board2.setVisible(false);
+                        System.exit(0); 
+                    }
+                    else{oos.writeObject(false);}
+                }
                 else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
-                 {
-                     board2.changeColor(selectionx, selectiony, Color.WHITE);
-                     oos.writeObject(false);
-                 }
-                //board2.changeColor(selectionx, selectiony, Color.RED);
+                {
+                    board2.changeColor(selectionx, selectiony, Color.WHITE);
+                    oos.writeObject(false);
+                }
             }
             check=gameLogic.endGame(list);
         }

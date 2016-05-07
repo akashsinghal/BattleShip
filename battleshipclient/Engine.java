@@ -10,7 +10,7 @@ public class Engine {
     static int selectiony;
     static int sendX;
     static int sendY;
-    static boolean check =true;
+    static boolean check = false;
     static ShipSelection ship;
     static GameLogic gameLogic;
     static ArrayList <XYPoint> list;
@@ -20,13 +20,12 @@ public class Engine {
         int portNumber = 1777;
         String str = "";
 
-        socket1 = new Socket(InetAddress.getLocalHost(), portNumber);
+        socket1 = new Socket("192.168.1.253", portNumber);
 
         ObjectInputStream ois = new ObjectInputStream(socket1.getInputStream());
 
         ObjectOutputStream oos = new ObjectOutputStream(socket1.getOutputStream());
-        oos.writeObject("You are connected to Player 2!  Please wait while Player 1 selects their ship configuration");
-
+        oos.writeObject("You are connected to Player 2! Let's start to setup the game.");
         str= (String) ois.readObject();
         System.out.println(str);
         System.out.println("Now, let's wait till player 1 selects their ships");
@@ -36,12 +35,13 @@ public class Engine {
             gameLogic = new GameLogic(ship);
         }
         System.out.println((String) ois.readObject());
+        System.out.println("---------------------------------------------------");
         MovesBoard board = new MovesBoard();
         ShipBoard board2 = new ShipBoard();
         board2.changeColor(list.get(0).getXPosition(), list.get(0).getYPosition(), Color.BLACK);
         board2.changeColor(list.get(1).getXPosition(), list.get(1).getYPosition(), Color.BLACK);
         board2.changeColor(list.get(2).getXPosition(), list.get(2).getYPosition(), Color.BLACK);
-        while(check)
+        while(!check)
         {
             selectionx = (int) ois.readObject();
             selectiony = (int) ois.readObject();
@@ -57,10 +57,13 @@ public class Engine {
                           }
                         }
                 if(gameLogic.endGame(list)){
-                         JOptionPane.showMessageDialog(null, "You Lost");
-                         check=gameLogic.endGame(list);
                          oos.writeObject(true);
+                         JOptionPane.showMessageDialog(null, "You Lost");
+                         board.setVisible(false);
+                         board2.setVisible(false);
+                         System.exit(0);
                  }
+                else{oos.writeObject(false);}
             }
             else if(gameLogic.hitOrMiss(selectionx,selectiony)==false)
             {
@@ -79,6 +82,8 @@ public class Engine {
                     board.changeColor(sendX, sendY, Color.RED);
                     if((boolean) ois.readObject()){
                         JOptionPane.showMessageDialog(null, "You Won!");
+                        board.setVisible(false);
+                        board2.setVisible(false);
                         System.exit(0);
                     }
                 }

@@ -44,9 +44,9 @@ public class GameLogic
     public boolean endGame(ArrayList<XYPoint> list )
      {
          if(list.size() ==0){
-         return false;
+         return true;
         }
-        else{return true;}
+        else{return false;}
      }
     //hello
 }
