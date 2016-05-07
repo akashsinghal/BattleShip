@@ -20,7 +20,7 @@ public class Engine {
         int portNumber = 1777;
         String str = "";
 
-        socket1 = new Socket("192.168.1.253", portNumber);
+        socket1 = new Socket("192.168.1.253", portNumber); //CHANGE IP ADDRESS TO SERVER COMPUTER IP
 
         ObjectInputStream ois = new ObjectInputStream(socket1.getInputStream());
 
