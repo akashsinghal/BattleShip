@@ -25,13 +25,14 @@ public class GameLogic
         return true; 
     }
 
-    public boolean hitOrMiss(int xPos, int yPos)
+    public boolean hitOrMiss(int xPos, int yPos, Music mPlayer)
     {
         x=xPos;
         y=yPos;
         if(checkBoard.getSpecificBoard(xPos,yPos).getBackground()== Color.BLACK)
         {
             JOptionPane.showMessageDialog(null, "YOU WERE HIT!");
+            mPlayer.play();
             return true;
         }
         else if(checkBoard.getSpecificBoard(xPos,yPos).getBackground()== Color.BLUE)
